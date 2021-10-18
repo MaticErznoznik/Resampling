@@ -1,0 +1,19 @@
+{
+    "bootstrap_servers": ["localhost:9092"],
+    "auto_offset_reset": "latest",
+    "enable_auto_commit": "True",
+    "group_id": "my-group",
+    "value_deserializer": "lambda x: loads(x.decode('utf-8'))",
+    "topics":["topic1"],
+    "resampling_alg": ["Resample()"],
+    "resampling_conf":[
+        {
+            "publishing_interval": 10,
+            "start_timestamp" :1634545680 ,
+            "output": ["KafkaOutput()"],
+            "output_conf": [{
+                "output_topic": "topic1_resampled"
+            }]
+        }
+    ]
+}
